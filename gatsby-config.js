@@ -6,7 +6,11 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sass',
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-tslint`,
+    {
+      resolve: `gatsby-plugin-postcss`
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -62,7 +66,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        modulePath: `${__dirname}/src/cms/cms.ts`,
       },
     },
     {
@@ -74,4 +78,4 @@ module.exports = {
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
-}
+};

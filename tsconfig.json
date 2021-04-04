@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom", "dom.iterable", "esnext.asynciterable", "es2018.promise"],
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "alwaysStrict": true,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "allowUnreachableCode": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": false,
+    "importHelpers": true,
+    "inlineSources": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react"
+  }
+}
