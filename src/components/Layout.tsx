@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import './all.sass'
+import './all.css'
 import useSiteMetadata from './SiteMetadata'
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const TemplateWrapper: FunctionComponent<Props> = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
-    <div>
+    <div className="overflow-hidden">
       <Helmet>
         <html lang="en"/>
         <title>{title}</title>

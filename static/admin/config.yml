@@ -26,7 +26,23 @@ collections:
       - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
-
+  - name: "menu"
+    label: "Menu"
+    create: true
+    slug: "menu-{{ID}}{{id}}"
+    folder: 'src/settings/menu'
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "main-menu"}
+      - name: "title"
+        label: "Title"
+        widget: "string"
+      - name: "menuItems"
+        label: "Menu items"
+        widget: "list"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "menu-item"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Link", name: "link", widget: "string"}
   - name: "pages"
     label: "Pages"
     files:

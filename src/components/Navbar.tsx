@@ -1,19 +1,23 @@
-import { Link } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import React, { Component } from 'react'
 // @ts-ignore
 import github from '../img/github-icon.svg'
 // @ts-ignore
 import logo from '../img/logo.svg'
+import { IQueryData } from '../interfaces/page-data.interface';
 
-interface Props {}
+interface MenuItem {
+  title: string;
+  link: string;
+}
 
 interface State {
   active: boolean;
   navBarActiveClass: string;
 }
 
-class Navbar extends Component<Props, State> {
-  constructor(props: Props) {
+class Navbar extends Component<IQueryData<MenuItem, 'menuItems'>, State> {
+  constructor(props: IQueryData<MenuItem, 'menuItems'>) {
     super(props);
     this.state = {
       active: false,
@@ -44,11 +48,11 @@ class Navbar extends Component<Props, State> {
   public render() {
     return (
       <nav
-        className="navbar is-transparent"
+        className="navbar is-transparent p-10"
         role="navigation"
         aria-label="main-navigation"
       >
-        <div className="container">
+        <div className="container mx-auto">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
               <img src={logo} alt="Kaldi" style={{ width: '88px' }}/>
@@ -66,9 +70,17 @@ class Navbar extends Component<Props, State> {
           </div>
           <div
             id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
+            className={`navbar-menu flex items-center justify-between ${this.state.navBarActiveClass}`}
           >
-            <div className="navbar-start has-text-centered">
+            <div className="navbar-start flex-start has-text-centered">
+              {/*{this.props.data.allMarkdownRemark.menuItems.map((item) => {*/}
+
+              {/*  return (*/}
+              {/*    <Link className="navbar-item" to={item.node.link}>*/}
+              {/*      {item.node.title}*/}
+              {/*    </Link>*/}
+              {/*  );*/}
+              {/*})}*/}
               <Link className="navbar-item" to="/about">
                 About
               </Link>
@@ -85,7 +97,7 @@ class Navbar extends Component<Props, State> {
                 Form Examples
               </Link>
             </div>
-            <div className="navbar-end has-text-centered">
+            <div className="navbar-end self-end has-text-centered">
               <a
                 className="navbar-item"
                 href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
@@ -93,7 +105,7 @@ class Navbar extends Component<Props, State> {
                 rel="noopener noreferrer"
               >
                 <span className="icon">
-                  <img src={github} alt="Github"/>
+                  <img src={github} className="h-12 w-12" alt="Github"/>
                 </span>
               </a>
             </div>
@@ -104,4 +116,29 @@ class Navbar extends Component<Props, State> {
   }
 }
 
-export default Navbar
+export default Navbar;
+
+// export default () => {
+//   return (
+//     <StaticQuery
+//       query={graphql`
+//       query MainNavQuery {
+//         allMarkdownRemark(
+//           filter: { frontmatter: { templateKey: { eq: "menu-item" } } }
+//         ) {
+//           menuItems {
+//             node {
+//               fields {
+//                 title
+//                 link
+//               }
+//             }
+//           }
+//         }
+//       }
+//     `}
+//       // @ts-ignore
+//       render={(data: IQueryData<BlogPost>['data'], count: number) => <Navbar data={data} count={count}/>}
+//     />
+//   )
+// }

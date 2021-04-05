@@ -3,7 +3,7 @@ export interface IQueryData<TQueryData, TNodeKey extends string = string> {
     allMarkdownRemark: {
       [key in TNodeKey]: [
         { [key: string]: TQueryData }
-      ] | number;
+      ];
     },
     [key: string]: any;
   },
