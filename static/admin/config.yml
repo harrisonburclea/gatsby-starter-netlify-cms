@@ -30,7 +30,7 @@ collections:
     label: "Menu"
     create: true
     slug: "menu-{{ID}}{{id}}"
-    files: 'src/settings/menu/menu.yml'
+    file: 'src/settings/menu/menu.yml'
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "main-menu"}
       - name: "title"
