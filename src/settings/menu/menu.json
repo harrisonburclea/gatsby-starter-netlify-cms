@@ -3,8 +3,18 @@
   "menuItems": [
     {
       "templateKey": "menu-item",
-      "title": "Menu title",
-      "link": "/link"
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "templateKey": "menu-item",
+      "title": "About",
+      "link": "/about"
+    },
+    {
+      "templateKey": "menu-item",
+      "title": "Contact",
+      "link": "/contact"
     }
   ]
 }
