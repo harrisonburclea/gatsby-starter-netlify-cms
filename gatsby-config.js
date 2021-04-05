@@ -29,12 +29,20 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/src/settings`,
+        name: 'settings',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         path: `${__dirname}/src/img`,
         name: 'images',
       },
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    `gatsby-transformer-json`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {

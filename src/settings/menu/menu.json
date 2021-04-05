@@ -1,0 +1,10 @@
+{
+  "title": "Main Menu",
+  "menuItems": [
+    {
+      "templateKey": "menu-item",
+      "title": "Menu title",
+      "link": "/link"
+    }
+  ]
+}
