@@ -3,14 +3,14 @@ import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../../components/Layout'
-import { IQueryData } from '../../interfaces/page-data.interface';
+import { IQueryMarkdownData } from '../../interfaces/page-data.interface';
 
 interface Props {
   fieldValue: string;
   totalCount: number;
 }
 
-const TagsPage: FunctionComponent<IQueryData<Props, 'group'>> = ({
+const TagsPage: FunctionComponent<IQueryMarkdownData<Props, 'group'>> = ({
   data,
 }) => {
   const group = data.allMarkdownRemark.group as unknown as [Props];

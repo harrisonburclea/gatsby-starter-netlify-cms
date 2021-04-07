@@ -1,144 +1,183 @@
 import { graphql, Link, StaticQuery } from 'gatsby'
 import React, { Component } from 'react'
 // @ts-ignore
-import github from '../img/github-icon.svg'
-// @ts-ignore
-import logo from '../img/logo.svg'
-import { IQueryData } from '../interfaces/page-data.interface';
-
-interface MenuItem {
-  title: string;
-  link: string;
-}
+import logo from '../img/physio-direct.png';
+import { IQueryMenuData } from '../interfaces/page-data.interface';
 
 interface State {
-  active: boolean;
-  navBarActiveClass: string;
+  isMenuOpen: boolean;
 }
 
-class Navbar extends Component<IQueryData<MenuItem, 'menuItems'>, State> {
-  constructor(props: IQueryData<MenuItem, 'menuItems'>) {
+class Navbar extends Component<IQueryMenuData, State> {
+  constructor(props: IQueryMenuData) {
     super(props);
     this.state = {
-      active: false,
-      navBarActiveClass: '',
+      isMenuOpen: false
     }
   }
 
-  private toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-            navBarActiveClass: 'is-active',
-          })
-          : this.setState({
-            navBarActiveClass: '',
-          })
-      }
-    )
-  };
+  private setIsMenuOpen(isMenuOpen: boolean): void {
+    this.setState({
+      isMenuOpen: isMenuOpen
+    });
+  }
 
   public render() {
-    return (
-      <nav
-        className="navbar is-transparent p-10"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container mx-auto">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }}/>
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span/>
-              <span/>
-              <span/>
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu flex items-center justify-between ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start flex-start has-text-centered">
-              {/*{this.props.data.allMarkdownRemark.menuItems.map((item) => {*/}
+    const {
+      isMenuOpen
+    } = this.state;
 
-              {/*  return (*/}
-              {/*    <Link className="navbar-item" to={item.node.link}>*/}
-              {/*      {item.node.title}*/}
-              {/*    </Link>*/}
-              {/*  );*/}
-              {/*})}*/}
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end self-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
+    return (
+      <div>
+        <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+          <div className="relative flex items-center justify-between">
+            <a
+              href="/"
+              aria-label="Company"
+              title="Company"
+              className="inline-flex items-center"
+            >
+              <img src={logo} alt="PhysioDirect" className="w-7"/>
+              <span className="ml-2 text-xl text-gray-700 font-bold">
+                PhysioDirect
+              </span>
+            </a>
+            <ul className="flex items-center hidden space-x-8 lg:flex">
+              {this.props.data.allMenuJson.nodes[0].menuItems.map((item) => {
+                return (
+                  <li key={item.title}>
+                    <Link className="font-medium tracking-wide transition-colors duration-200 hover:text-teal-accent-400" to={item.link}>
+                      {item.title}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li>
+                <a
+                  href="tel:01158401043"
+                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary focus:shadow-outline focus:outline-none"
+                  aria-label="Call Now"
+                  title="Call Now"
+                >
+                  CALL NOW
+                </a>
+              </li>
+            </ul>
+            <div className="lg:hidden">
+              <button
+                aria-label="Open Menu"
+                title="Open Menu"
+                className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
+                onClick={() => this.setIsMenuOpen(true)}
               >
-                <span className="icon">
-                  <img src={github} className="h-12 w-12" alt="Github"/>
-                </span>
-              </a>
+                <svg className="w-5" viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
+                  />
+                </svg>
+              </button>
+              {isMenuOpen && (
+                <div className="absolute z-50 top-0 left-0 w-full">
+                  <div className="p-5 bg-white border rounded shadow-sm">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <a
+                          href="/"
+                          aria-label="Company"
+                          title="Company"
+                          className="inline-flex items-center"
+                        >
+                          <svg
+                            className="w-8 text-deep-purple-accent-400"
+                            viewBox="0 0 24 24"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeMiterlimit="10"
+                            stroke="currentColor"
+                            fill="none"
+                          >
+                            <rect x="3" y="1" width="7" height="12" />
+                            <rect x="3" y="17" width="7" height="6" />
+                            <rect x="14" y="1" width="7" height="6" />
+                            <rect x="14" y="11" width="7" height="12" />
+                          </svg>
+                          <span className="ml-2 text-xl font-bold tracking-wide uppercase">
+                          Company
+                        </span>
+                        </a>
+                      </div>
+                      <div>
+                        <button
+                          aria-label="Close Menu"
+                          title="Close Menu"
+                          className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          onClick={() => this.setIsMenuOpen(false)}
+                        >
+                          <svg className="w-5" viewBox="0 0 24 24">
+                            <path
+                              fill="currentColor"
+                              d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <nav>
+                      <ul className="space-y-4">
+                        {this.props.data.allMenuJson.nodes[0].menuItems.map((item) => {
+                          return (
+                            <li>
+                              <Link key={item.title} className="font-medium tracking-wide transition-colors duration-200" to={item.link}>
+                                {item.title}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                        <li>
+                          <Link className="font-medium tracking-wide transition-colors duration-200 bg-primary" to="/">
+                            CALL NOW
+                          </Link>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-      </nav>
-    )
+      </div>
+    );
   }
 }
 
-export default Navbar;
-
-// export default () => {
-//   return (
-//     <StaticQuery
-//       query={graphql`
-//       query MainNavQuery {
-//         allMarkdownRemark(
-//           filter: { frontmatter: { templateKey: { eq: "menu-item" } } }
-//         ) {
-//           menuItems {
-//             node {
-//               fields {
-//                 title
-//                 link
-//               }
-//             }
-//           }
-//         }
-//       }
-//     `}
-//       // @ts-ignore
-//       render={(data: IQueryData<BlogPost>['data'], count: number) => <Navbar data={data} count={count}/>}
-//     />
-//   )
-// }
+export default () => {
+  return (
+    <StaticQuery
+      query={graphql`
+      query MenuQuery {
+        allMenuJson {
+          nodes {
+            menuItems {
+              title
+              link
+            }
+          }
+        }
+      }
+    `}
+      // @ts-ignore
+      render={(data: IQueryMenuData, count: number) => <Navbar data={data} count={count}/>}
+    />
+  )
+}

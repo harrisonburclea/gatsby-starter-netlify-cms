@@ -6,7 +6,7 @@ import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 import Pricing from '../components/Pricing'
 import Testimonials from '../components/Testimonials'
 import { IDict } from '../interfaces/dict.interface';
-import { IQueryData } from '../interfaces/page-data.interface';
+import { IQueryMarkdownData } from '../interfaces/page-data.interface';
 
 type Image = IDict<any> | string;
 
@@ -137,7 +137,7 @@ export const ProductPageTemplate: FunctionComponent<ProductPageTemplateProps> = 
   </div>
 );
 
-const ProductPage: FunctionComponent<IQueryData<{}>> = ({ data }) => {
+const ProductPage: FunctionComponent<IQueryMarkdownData<{}>> = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (

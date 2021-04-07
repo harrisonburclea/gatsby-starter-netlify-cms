@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import { IDict } from '../interfaces/dict.interface';
-import { IQueryData } from '../interfaces/page-data.interface';
+import { IQueryMarkdownData } from '../interfaces/page-data.interface';
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
 interface BlogPost {
@@ -11,7 +11,7 @@ interface BlogPost {
     frontmatter: IDict<any>
 }
 
-class BlogRoll extends Component<IQueryData<BlogPost, 'edges'>> {
+class BlogRoll extends Component<IQueryMarkdownData<BlogPost, 'edges'>> {
   render() {
     const { data } = this.props;
     const posts: [{ node: BlogPost }] = data.allMarkdownRemark.edges as [{ node: BlogPost }];
@@ -101,7 +101,7 @@ export default () => {
       }
     `}
       // @ts-ignore
-      render={(data: IQueryData<BlogPost>['data'], count: number) => <BlogRoll data={data} count={count}/>}
+      render={(data: IQueryMarkdownData<BlogPost>['data'], count: number) => <BlogRoll data={data} count={count}/>}
     />
   )
 }

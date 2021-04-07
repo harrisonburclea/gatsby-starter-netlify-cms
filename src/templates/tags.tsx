@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import { IDict } from '../interfaces/dict.interface';
-import { IQueryData } from '../interfaces/page-data.interface';
+import { IQueryMarkdownData } from '../interfaces/page-data.interface';
 
 interface ITag {
   fields: {
@@ -14,7 +14,7 @@ interface ITag {
   }
 }
 
-class TagRoute extends Component<IQueryData<ITag, 'edges'>> {
+class TagRoute extends Component<IQueryMarkdownData<ITag, 'edges'>> {
   render() {
     const posts: [{ node: ITag }] = this.props.data.allMarkdownRemark.edges as [{ node: ITag }];
     const postLinks = posts.map((post) => (

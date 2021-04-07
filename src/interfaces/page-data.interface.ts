@@ -1,4 +1,4 @@
-export interface IQueryData<TQueryData, TNodeKey extends string = string> {
+export interface IQueryMarkdownData<TQueryData, TNodeKey extends string = string> {
   data: {
     allMarkdownRemark: {
       [key in TNodeKey]: [
@@ -9,4 +9,17 @@ export interface IQueryData<TQueryData, TNodeKey extends string = string> {
   },
   pageContext?: any;
   count?: any;
+}
+
+export interface IQueryMenuData {
+  data: {
+    allMenuJson: {
+      nodes: [{
+        menuItems: [{
+          title: string;
+          link: string;
+        }]
+      }]
+    }
+  }
 }

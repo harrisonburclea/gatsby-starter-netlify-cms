@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import "tailwindcss/tailwind.css"
 import './all.css'
 import useSiteMetadata from './SiteMetadata'
 

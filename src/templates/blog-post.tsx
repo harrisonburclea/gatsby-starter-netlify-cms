@@ -4,7 +4,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import { Helmet } from 'react-helmet'
 import Content, { HTMLContent } from '../components/Content'
 import Layout from '../components/Layout'
-import { IQueryData } from '../interfaces/page-data.interface';
+import { IQueryMarkdownData } from '../interfaces/page-data.interface';
 
 interface BlogPostTemplateProps {
   content: ReactNode,
@@ -55,7 +55,7 @@ export const BlogPostTemplate: FunctionComponent<BlogPostTemplateProps> = ({
   )
 };
 
-const BlogPost: FunctionComponent<IQueryData<{html: string}>> = ({ data }) => {
+const BlogPost: FunctionComponent<IQueryMarkdownData<{html: string}>> = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
