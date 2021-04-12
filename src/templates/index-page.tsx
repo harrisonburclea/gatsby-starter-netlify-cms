@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import BlogRoll from '../components/BlogRoll'
 import Features from '../components/Features'
 import HeroAngleImage from '../components/HeroAngleImage';
+import IconFeature from '../components/IconFeature';
 
 import Layout from '../components/Layout'
 import { IDict } from '../interfaces/dict.interface';
@@ -36,6 +37,7 @@ export const IndexPageTemplate: FunctionComponent<IndexPageTemplateProps> = (
 ) => (
   <div>
     <HeroAngleImage />
+    <IconFeature />
     <section className="section section--gradient">
       <div className="container">
         <div className="section">

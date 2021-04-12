@@ -54,7 +54,7 @@ class Navbar extends Component<IQueryMenuData, State> {
               })}
               <li>
                 <a
-                  href="tel:01158401043"
+                  href="tel:01159691528"
                   className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-primary focus:shadow-outline focus:outline-none"
                   aria-label="Call Now"
                   title="Call Now"
@@ -144,7 +144,7 @@ class Navbar extends Component<IQueryMenuData, State> {
                           );
                         })}
                         <li>
-                          <Link className="font-medium tracking-wide transition-colors duration-200 bg-primary" to="/">
+                          <Link className="font-medium tracking-wide transition-colors duration-200 bg-primary" to="tel:01159691528">
                             CALL NOW
                           </Link>
                         </li>
