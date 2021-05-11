@@ -40,6 +40,24 @@ module.exports = {
         name: 'images',
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `PhysioDirect`,
+        short_name: `PhysioDirect`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#ff8200`,
+        display: `standalone`,
+        icon: `src/img/physio-direct.png`
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        precachePages: ['/']
+      }
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     `gatsby-transformer-json`,

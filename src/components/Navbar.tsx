@@ -1,4 +1,4 @@
-import { graphql, Link, StaticQuery } from 'gatsby'
+import { Link } from 'gatsby'
 import React, { Component } from 'react'
 // @ts-ignore
 import logo from '../img/physio-direct.png';
@@ -46,7 +46,9 @@ class Navbar extends Component<IQueryMenuData, State> {
               {this.props.data.allMenuJson.nodes[0].menuItems.map((item) => {
                 return (
                   <li key={item.title}>
-                    <Link className="font-medium tracking-wide transition-colors duration-200 hover:text-teal-accent-400" to={item.link}>
+                    <Link
+                      className="font-medium tracking-wide transition-colors duration-200 hover:text-teal-accent-400"
+                      to={item.link}>
                       {item.title}
                     </Link>
                   </li>
@@ -123,7 +125,8 @@ class Navbar extends Component<IQueryMenuData, State> {
                         {this.props.data.allMenuJson.nodes[0].menuItems.map((item) => {
                           return (
                             <li>
-                              <Link key={item.title} className="font-medium tracking-wide transition-colors duration-200" to={item.link}>
+                              <Link key={item.title}
+                                    className="font-medium tracking-wide transition-colors duration-200" to={item.link}>
                                 {item.title}
                               </Link>
                             </li>
@@ -152,23 +155,4 @@ class Navbar extends Component<IQueryMenuData, State> {
   }
 }
 
-export default () => {
-  return (
-    <StaticQuery
-      query={graphql`
-      query MenuQuery {
-        allMenuJson {
-          nodes {
-            menuItems {
-              title
-              link
-            }
-          }
-        }
-      }
-    `}
-      // @ts-ignore
-      render={(data: IQueryMenuData, count: number) => <Navbar data={data} count={count}/>}
-    />
-  )
-}
+export default Navbar

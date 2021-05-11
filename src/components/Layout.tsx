@@ -1,17 +1,18 @@
-import { withPrefix } from 'gatsby'
+import { graphql, StaticQuery, withPrefix } from 'gatsby'
 import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import "tailwindcss/tailwind.css"
 import './all.css'
+import { IQueryMenuData } from '../interfaces/page-data.interface';
 import useSiteMetadata from './SiteMetadata'
 
-interface Props {
+interface Props extends IQueryMenuData {
   children?: JSX.Element | JSX.Element[];
 }
 
-const TemplateWrapper: FunctionComponent<Props> = ({ children }) => {
+const TemplateWrapper: FunctionComponent<Props> = ({ data, children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <div className="overflow-hidden">
@@ -19,32 +20,6 @@ const TemplateWrapper: FunctionComponent<Props> = ({ children }) => {
         <html lang="en"/>
         <title>{title}</title>
         <meta name="description" content={description}/>
-
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href={`${withPrefix('/')}img/apple-touch-icon.png`}
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href={`${withPrefix('/')}img/favicon-32x32.png`}
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href={`${withPrefix('/')}img/favicon-16x16.png`}
-          sizes="16x16"
-        />
-
-        <link
-          rel="mask-icon"
-          href={`${withPrefix('/')}img/safari-pinned-tab.svg`}
-          color="#ff4400"
-        />
-        <meta name="theme-color" content="#fff"/>
-
         <meta property="og:type" content="business.business"/>
         <meta property="og:title" content={title}/>
         <meta property="og:url" content="/"/>
@@ -53,11 +28,34 @@ const TemplateWrapper: FunctionComponent<Props> = ({ children }) => {
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar/>
+      <Navbar data={data}/>
       <div>{children}</div>
-      <Footer/>
+      <Footer data={data}/>
     </div>
   )
 };
 
-export default TemplateWrapper
+const Layout: FunctionComponent<Props> = ({ children }) => {
+  return (
+    <StaticQuery
+      query={
+        graphql`
+          query MenuQuery {
+            allMenuJson {
+              nodes {
+                menuItems {
+                  title
+                  link
+                }
+              }
+            }
+          }
+        `
+      }
+      // @ts-ignore
+      render={(data: IQueryMenuData) => <TemplateWrapper data={data} children={children} />}
+    />
+  )
+};
+
+export default Layout
