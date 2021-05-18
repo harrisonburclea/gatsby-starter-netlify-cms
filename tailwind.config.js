@@ -14,7 +14,10 @@ module.exports = {
     extend: {
       colors: {
         primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)'
+        'primary-opaque': 'var(--color-primary-opaque)',
+        'primary-half-opaque': 'var(--color-primary-half-opaque)',
+        secondary: 'var(--color-secondary)',
+        'secondary-opaque': 'var(--color-secondary-opaque)'
       }
     }
   },

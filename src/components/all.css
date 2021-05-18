@@ -1,8 +1,12 @@
+@import 'slick-carousel/slick/slick.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   --color-primary: #ff8200;
+  --color-primary-half-opaque: rgba(255, 130, 0, 0.37);
+  --color-primary-opaque: #ff820014;
   --color-secondary: #000000;
+  --color-secondary-opaque: #1f293724;
 }
 
 @tailwind base;
@@ -11,4 +15,25 @@
 
 .container {
   margin: 0 auto;
+}
+
+.slick-dots {
+  padding-left: 0.7rem;
+}
+
+.slick-dots li {
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid black;
+  width: 8px;
+  height: 8px;
+  margin-left: 5px;
+}
+
+.slick-dots li.slick-active {
+  background: var(--color-primary);
+}
+
+.slick-dots li button {
+  font-size: 0;
 }

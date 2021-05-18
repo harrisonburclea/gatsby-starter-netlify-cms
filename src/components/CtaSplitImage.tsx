@@ -5,7 +5,7 @@ import helpImage from '../img/physio-direct-here-to-help.jpg';
 export class CtaSplitImage extends Component {
   render() {
     return (
-      <div className="relative bg-gray-800 mt-10">
+      <div className="relative bg-gray-800">
         <div className="h-56 bg-primary sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
           <div className="absolute top-0 bottom-0 left-0 right-0 h-full w-full bg-primary opacity-40"></div>
           <img className="w-full h-full object-cover"
