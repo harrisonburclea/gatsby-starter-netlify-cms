@@ -8,11 +8,13 @@ import './all.css'
 import { IQueryMenuData } from '../interfaces/page-data.interface';
 import useSiteMetadata from './SiteMetadata'
 
-interface Props extends IQueryMenuData {
+interface Props {
   children?: JSX.Element | JSX.Element[];
 }
 
-const TemplateWrapper: FunctionComponent<Props> = ({ data, children }) => {
+interface Data extends IQueryMenuData, Props {}
+
+const TemplateWrapper: FunctionComponent<Data> = ({ data, children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <div className="overflow-hidden">

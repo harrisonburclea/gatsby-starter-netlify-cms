@@ -29,8 +29,8 @@ const Testimonials: FunctionComponent<Props> = ({ testimonials }) => {
 
   return (
     <div className="py-10 my-10">
-      <div className="flex max-w-screen-xl mx-auto">
-        <h2 className="text-3xl font-bold text-left text-primary mb-20 relative w-1/3">
+      <div className="flex-col sm:flex-row px-5 flex max-w-screen-xl mx-auto">
+        <h2 className="text-3xl font-bold text-left text-primary mb-20 relative w-full sm:w-1/3">
           <svg className="absolute -top-6 -left-4 transform -translate-x-3 -translate-y-2 h-16 w-16 text-primary-half-opaque"
                fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
             <path
@@ -38,7 +38,7 @@ const Testimonials: FunctionComponent<Props> = ({ testimonials }) => {
           </svg>
           What our customers say
         </h2>
-        <div className="w-2/3">
+        <div className="w-full sm:w-2/3">
           <Slider {...settings}>
             {testimonials.map((testimonial) => (
                 <div className="px-3">

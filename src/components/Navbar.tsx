@@ -61,7 +61,7 @@ class Navbar extends Component<IQueryMenuData, State> {
                   aria-label="Call Now"
                   title="Call Now"
                 >
-                  CALL NOW
+                  BOOK NOW
                 </a>
               </li>
             </ul>

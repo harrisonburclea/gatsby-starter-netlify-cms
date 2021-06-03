@@ -4,8 +4,6 @@ import ContactSimpleFourCol from '../components/contact-simple-four-col';
 import CtaFeatureContent from '../components/CtaFeatureContent';
 import { CtaSplitImage } from '../components/CtaSplitImage';
 import HeroAngleImage from '../components/HeroAngleImage';
-import IconFeature from '../components/IconFeature';
-
 import Layout from '../components/Layout'
 import Testimonials from '../components/Testimonials';
 import { IDict } from '../interfaces/dict.interface';
