@@ -41,7 +41,7 @@ const Testimonials: FunctionComponent<Props> = ({ testimonials }) => {
         <div className="w-full sm:w-2/3">
           <Slider {...settings}>
             {testimonials.map((testimonial) => (
-                <div className="px-3">
+                <div key={testimonial.name} className="px-3">
                   <FiveStars/>
                   <div className="relative text-lg md:flex-grow my-3">
                     <p className="relative leading-7">{testimonial.review}</p>

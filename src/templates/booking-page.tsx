@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import BookingForm from '../components/BookingForm';
 import Layout from '../components/Layout'
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 export const BookingPageTemplate: FunctionComponent<Props> = () => {
   return (
     <div>
-      <h1>hi!</h1>
+      <BookingForm businessId="300360632799073285" />
     </div>
   );
 };
