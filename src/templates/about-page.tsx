@@ -1,4 +1,3 @@
-import { graphql } from 'gatsby'
 import React, { FunctionComponent } from 'react'
 import Content, { HTMLContent } from '../components/Content'
 import Layout from '../components/Layout'
@@ -51,14 +50,3 @@ const AboutPage: FunctionComponent<AboutPageProps> = ({ data }) => {
 };
 
 export default AboutPage
-
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
-      }
-    }
-  }
-`;

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import ContactSimpleFourCol from '../components/contact-simple-four-col';
+import Locations from '../components/Locations';
 import CtaFeatureContent from '../components/CtaFeatureContent';
 import { CtaSplitImage } from '../components/CtaSplitImage';
 import HeroAngleImage from '../components/HeroAngleImage';
@@ -43,7 +43,7 @@ export const IndexPageTemplate: FunctionComponent<IndexPageTemplateProps> = () =
       <CtaFeatureContent/>
       <Testimonials testimonials={testimonials}/>
       <CtaSplitImage/>
-      <ContactSimpleFourCol/>
+      <Locations/>
     </div>
   );
 };

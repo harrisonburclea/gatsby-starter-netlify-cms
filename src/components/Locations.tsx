@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ContactSimpleFourCol() {
+export default function Locations() {
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
